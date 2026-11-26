@@ -1,0 +1,370 @@
+/* ==================================
+   Footer Layout & Theme (Light Amazon Dark Theme)
+================================== */
+.footer-section {
+  position: relative;
+  background-color: rgba(238, 166, 94, 0.314); /* Amazon ka standard soft dark theme color */
+  color: #ffffff;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  padding-top: 50px; 
+  margin-top: 180px;
+ 
+}
+
+/* Floating CTA Card Wrapper */
+.footer-card-wrapper {
+  max-width: 1000px; /* Width ko compact kar diya hai */
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+  transform: translateY(-60%); 
+  margin-bottom: -100px;
+}
+
+/* Card ki Styling */
+.footer-cta-card {
+  background: linear-gradient(135deg, #96bf48 0%, #111720 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Taake image height equal le */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden; 
+  padding: 0; /* Padding zero ki taake image border tak jaye */
+}
+
+/* Left Side: Text & Button container */
+.footer-cta-content {
+  padding: 45px 50px; 
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-cta-content h2 {
+  font-size: 28px; 
+  font-weight: 800;
+  margin: 0 0 12px 0;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.footer-cta-content p {
+  font-size: 15px;
+  color: #f8d16d;
+  margin: 0 0 25px 0;
+  max-width: 450px;
+  line-height: 1.5;
+}
+
+.footer-cta-btn {
+  background-color: #ffffff; /* Clean white button */
+  color: #111111;
+  border: none;
+  padding: 12px 28px;
+  font-size: 14.5px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content; /* Sirf utni jagah lega jitna text hai */
+  transition: all 0.3s ease;
+}
+
+.footer-cta-btn:hover {
+  background-color: #FF9900; 
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Right Side: Circular Curved Image */
+.footer-cta-graphic {
+  width: 450px; 
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-circular-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 100%; /* Left se circular curve */
+  border-bottom-left-radius: 100%; 
+}
+
+/* ==================================
+   Main Footer Links Area
+================================== */
+.footer-main {
+  padding: 40px 0 0 0; 
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-container {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0 20px 40px 20px; 
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 30px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.footer-logo h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #131212;
+  margin: 0;
+  letter-spacing: -1px;
+}
+
+.logo-icon {
+  background: linear-gradient(135deg, #FF9900 0%, #ff8800 100%);
+  color: white;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 18px;
+  font-style: italic;
+}
+
+.logo-highlight {
+  color: #96bf48;
+  font-style: italic;
+}
+
+.footer-desc {
+  color: #ee4295;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  max-width: 300px;
+}
+
+/* System Status Indicator */
+.system-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: #96bf48;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #10b981;
+}
+
+/* Column Headings and Links */
+.footer-col h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f0a10e;
+  margin: 0 0 15px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px; 
+ 
+}
+
+.footer-col ul li a {
+   color: #111720;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+}
+
+.footer-col ul li a:hover {
+  color: #96bf48;
+  padding-left: 5px;
+}
+
+/* ==================================
+   Subfooter (Bottom Bar)
+================================== */
+.subfooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px 0; 
+  background-color: #96bf48;
+}
+
+.subfooter-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px !important;
+}
+
+.subfooter p {
+  margin: 0;
+  font-size: 10px;
+  color: #04070b;
+}
+
+.subfooter-links {
+  display: flex;
+  gap: 20px;
+}
+
+
+
+.subfooter-links a:hover {
+  color: #fff;
+}
+
+/* ==================================
+   Responsive Design for Footer
+================================== */
+/* ==================================
+   Responsive Design for Footer (Keeps Image on Right)
+================================== */
+@media (max-width: 992px) {
+  /* Tablet Screens */
+  .footer-cta-card {
+    flex-direction: row; /* Image ko right par hi rakhega */
+    align-items: stretch;
+  }
+  
+  .footer-cta-content {
+    padding: 30px 25px;
+  }
+
+  .footer-cta-content h2 {
+    font-size: 24px;
+  }
+
+  .footer-cta-content p {
+    font-size: 14px;
+  }
+
+  .footer-cta-graphic {
+    width: 300px; /* Image area thora chota kiya */
+  }
+
+  /* Footer Links Layout */
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile Screens */
+  .footer-card-wrapper {
+    padding: 0 15px; /* Side spacing ko theek kiya taake card dab na jaye */
+  }
+
+  .footer-cta-card {
+    flex-direction: row; 
+    border-radius: 12px;
+  }
+
+  .footer-cta-content {
+    padding: 20px 15px; 
+    flex: 1; 
+    justify-content: center;
+  }
+  
+  .footer-cta-content h2 {
+    font-size: 18px; 
+    margin: 0 0 8px 0;
+  }
+  
+  .footer-cta-content p {
+    font-size: 12.5px;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+  }
+
+  .footer-cta-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+
+  .footer-cta-graphic {
+    width: 35%; 
+    min-width: 110px; 
+  }
+
+  .cta-circular-img {
+    border-top-left-radius: 100%; 
+    border-bottom-left-radius: 100%; 
+  }
+
+  /* ==================================
+     Footer Links Mobile Layout FIX
+  ================================== */
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 Columns ka structure */
+    gap: 30px 15px; /* Upar-neechay 30px gap, side par 15px gap */
+  }
+
+  /* 1. Logo aur Text wala column poori 1 row (full width) lega */
+  .brand-col {
+    grid-column: 1 / -1; 
+  }
+
+  /* (Navigation aur Features automatically 2 columns mein share ho jayenge) */
+
+  /* 2. Aakhri Legal & Trust wala column aakhir mein poori 1 row lega */
+  .footer-col:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .subfooter-flex {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Extra Small Mobile (iPhone SE etc) */
+  .footer-cta-content h2 {
+    font-size: 16px;
+  }
+  
+  .footer-cta-content p {
+    font-size: 11.5px;
+    margin: 0 0 12px 0;
+  }
+
+  .footer-cta-graphic {
+    min-width: 90px; 
+  }
+}

@@ -1,0 +1,130 @@
+@import './theme.css';
+
+.wk-step--amazon {
+  background: var(--bg-orange-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.wk-step--amazon .wk-eyebrow-num {
+  color: var(--amazon-orange-deep);
+}
+
+.wk-step--amazon .wk-step__image-frame {
+  background: linear-gradient(160deg, #ffe9cc 0%, #ffd8a3 100%);
+}
+/* .wk-step--amazon .wk-step__title::after {
+  content: '';
+  position: absolute;
+  left: 53%;
+  bottom: 225px;
+  width: 150px;
+  height: 4px;
+  background-color: var(--shopify-green);
+  border-radius: 2px;
+} */
+ /* =========================================
+   Title Underline (Responsive & Perfect for All Screens)
+========================================= */
+.wk-step--amazon .wk-step__title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 12px;
+  margin-bottom: 1.2rem;
+}
+
+.wk-step--amazon .wk-step__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  width: 150px; /* Line ki lambai */
+  height: 4px; /* Line ki motai */
+  background-color: var(--shopify-green); /* Aap yahan amazon orange bhi kar sakti hain agar chahein */
+  border-radius: 2px;
+}
+
+/* =========================================
+   Sellbrite Style Solid Abstract Blobs (Amazon Orange Theme Colors)
+========================================= */
+.wk-abstract-blob {
+  position: absolute;
+  left: -150px;
+  top: 10%;
+  width: 320px;
+  height: 80%;
+  background-color: #ffe9cc; /* Amazon orange soft theme ke mutabiq color */
+  border-radius: 0 60% 40% 0 / 0 45% 55% 0; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wk-abstract-blob-2 {
+  position: absolute;
+  left: -80px;
+  top: 30%;
+  width: 180px;
+  height: 50%;
+  background-color: #ffd8a3; /* Darker tone of amazon orange theme */
+  border-radius: 0 40% 60% 0 / 0 50% 50% 0;
+  z-index: 0;
+  pointer-events: none;
+  transform: rotate(-5deg);
+}
+
+/* Ensure container text and images stay above the blob */
+.wk-step--amazon .wk-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   Mobile Responsiveness & Splitting (Down to 270px)
+========================================= */
+@media (max-width: 900px) {
+  .wk-abstract-blob {
+    width: 200px;
+    height: 60%;
+    left: -120px;
+  }
+  .wk-abstract-blob-2 {
+    width: 120px;
+    left: -60px;
+  }
+
+  /* Text aur Image ko completely split (upar text, neeche image) karne ke liye */
+  .wk-step--amazon .wk-mobile-split {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-abstract-blob {
+    width: 120px;
+    left: -70px;
+  }
+  .wk-abstract-blob-2 {
+    width: 80px;
+    left: -40px;
+  }
+
+  .wk-step--amazon .wk-step__title {
+    font-size: 1.6rem;
+  }
+  .wk-step--amazon .wk-body {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .wk-abstract-blob {
+    width: 80px;
+    left: -50px;
+  }
+  .wk-abstract-blob-2 {
+    width: 60px;
+    left: -30px;
+  }
+}

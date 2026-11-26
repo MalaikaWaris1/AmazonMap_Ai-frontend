@@ -1,0 +1,155 @@
+/* ==================================
+   Trusted Logos Section (Force Full Width)
+================================== */
+.trusted-section {
+  /* Yeh CSS properties isay kisi bhi chote container se bahar nikal kar poori screen ki width dengi */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  padding: 50px 0;
+  background-color: transparent; 
+  overflow: hidden; 
+}
+
+.trusted-heading {
+  text-align: center;
+  font-size: 22px; 
+  font-weight: 500;
+  font-style: italic; 
+  color: #96bf48;
+  letter-spacing: 0.5px;
+  margin-bottom: 35px;
+}
+
+/* ==================================
+   Infinite Slider Wrapper (White Strip)
+================================== */
+.slider-wrapper {
+  position: relative;
+  width: 100%; 
+  /* background-color: #ffffff; White strip */
+  padding: 2px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  /* border-top: 1px solid rgba(0,0,0,0.04); 
+  border-bottom: 1px solid rgba(0,0,0,0.04); */
+}
+
+/* ==================================
+   Logos Track (Continuous Movement)
+================================== */
+.logos-track {
+  display: flex;
+  align-items: center;
+  gap: 120px; /* Logos ke darmiyan khula fasla, koi diamond nahi */
+  width: max-content;
+  animation: scrollLogos 25s linear infinite; 
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 3 sets hain, isliye 33.33% par seamless loop banega */
+    transform: translateX(-33.33%);
+  }
+}
+
+/* ==================================
+   Logo Item & Image Styling
+================================== */
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Icon aur text ke darmiyan space */
+}
+
+.logo-emoji {
+  font-size: 45px; /* Emojis ko bara karne ke liye font-size use hota hai */
+  line-height: 1;
+  display: inline-block;
+}
+
+/* Adjust specific images to look balanced */
+.amazon-logo {
+  height: 30px;
+  margin-top: 8px; /* Amazon ke text ko dusre logos ki line mein laane ke liye */
+}
+
+.stripe-logo {
+  height: 38px;
+}
+/* Text ka default color aur smooth transition */
+.logo-text {
+  color: #555555; /* Default gray color */
+  font-size: 22px;
+  font-weight: 700;
+  transition: color 0.3s ease; 
+}
+
+/* Hover karne par color change hoga */
+.logo-item:hover .logo-text {
+  color: var(--hover-color); 
+}
+
+/* Agar aap chahti hain ke hover par icon bhi thora move kare toh yeh add karein */
+.logo-item {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.logo-item:hover {
+  transform: translateY(-3px);
+}
+/* ==================================
+   Responsive Design
+================================== */
+/* ==================================
+   Responsive Design
+================================== */
+@media (max-width: 768px) {
+  .trusted-section {
+    padding: 30px 0;
+  }
+
+  .trusted-heading {
+    font-size: 14px; /* Heading ko thora aur compact kiya */
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+
+  .slider-wrapper {
+    padding: 15px 0;
+  }
+
+  .logos-track {
+    gap: 35px; /* Fasla 70px se kam kar ke 35px kar diya taake zyada items fit hon */
+  }
+
+  .logo-item {
+    gap: 6px; /* Emoji aur text ke darmiyan ki space kam ki */
+  }
+
+  .logo-emoji {
+    font-size: 22px; /* Emoji ka size mobile ke mutabiq chota kiya */
+  }
+
+  .logo-text {
+    font-size: 13px; /* Text ka size chota kar diya taake screen par 3-4 asani se dikhein */
+  }
+  
+  .amazon-logo {
+    height: 18px;
+  }
+  
+  .stripe-logo {
+    height: 24px;
+  }
+}

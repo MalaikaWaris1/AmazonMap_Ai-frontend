@@ -1,0 +1,388 @@
+/* ==================================
+   Bento Section & Light Background Theme
+================================== */
+.bento-section {
+  padding: 100px 20px;
+  background-color: #f9fafb; 
+  color: #111827;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.bento-bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25; 
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shopify-glow { background-color: #96bf48; top: -100px; left: -100px; }
+.amazon-glow { background-color: #FF9900; bottom: -100px; right: -100px; }
+
+.bento-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.bento-header { text-align: center; margin-bottom: 60px; }
+.bento-header h2 { font-size: 36px; font-weight: 800; margin: 0 0 15px 0; color: #111827; }
+.bento-header h2 span { color: #FF9900; }
+.bento-header p { color: #4b5563; font-size: 16px; max-width: 500px; margin: 0 auto; }
+
+/* ==================================
+   Bento Grid Layout
+================================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 300px); 
+  gap: 25px;
+}
+
+.bento-wide { grid-column: span 2; }
+.bento-tall { grid-row: span 2; }
+
+/* ==================================
+   3D Card Styling & Animated Top Border
+================================== */
+.bento-card {
+  background: #ffffff; 
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Static light border */
+  border-radius: 24px;
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); 
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+/* Animated Top Line Fill Effect */
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px; /* Line ki motayi */
+  width: 0; /* Shuru mein line gayab hogi */
+  transition: width 0.4s ease-out; /* Tezi se bharne ka effect */
+  z-index: 10;
+}
+
+.card-mapping::before, .card-sync::before { background-color: #96bf48; }
+.card-validation::before, .card-rules::before { background-color: #FF9900; }
+
+/* Jab hover ho toh line 100% fill ho jaye */
+.bento-card:hover::before {
+  width: 100%;
+}
+
+.bento-card:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+}
+
+.card-mapping:hover, .card-sync:hover {
+  box-shadow: 0 25px 50px -12px rgba(150, 191, 72, 0.15); 
+}
+
+.card-validation:hover, .card-rules:hover {
+  box-shadow: 0 25px 50px -12px rgba(255, 153, 0, 0.15); 
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+  transform: translateZ(20px); 
+}
+
+.card-content h3 { font-size: 22px; font-weight: 700; margin: 0 0 10px 0; color: #1f2937; }
+.card-content p { font-size: 14px; color: #6b7280; line-height: 1.5; margin: 0; }
+
+/* ==================================
+   Inside Card 3D Visuals
+================================== */
+.card-3d-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.float-layer-1 { transform: translateZ(30px); transition: transform 0.4s; }
+.float-layer-2 { transform: translateZ(50px); transition: transform 0.4s; }
+
+.bento-card:hover .float-layer-1 { transform: translateZ(40px) scale(1.03); }
+.bento-card:hover .float-layer-2 { transform: translateZ(70px) scale(1.05); }
+
+/* ==================================
+   --- AI Mapping Visual (ANIMATED) --- 
+================================== */
+.mapping-nodes { 
+  display: flex; 
+  align-items: center; 
+  gap: 15px; 
+  margin-top: 20px; 
+}
+
+.node { 
+  width: 50px; 
+  height: 50px; 
+  border-radius: 14px; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-weight: 800; 
+  font-size: 18px; 
+  position: relative; 
+  z-index: 2;
+}
+
+/* Nodes Par Smooth Pulsing aur Scaling Effect */
+.shopify-node { 
+  background: #96bf48; 
+  color: #fff; 
+  animation: pulseGreen 2s infinite ease-in-out; 
+}
+
+.amazon-node { 
+  background: #FF9900; 
+  color: #fff; 
+  animation: pulseOrange 2s infinite ease-in-out 1s; 
+}
+
+.ai-node { 
+  background: #635BFF; 
+  color: #fff; 
+  border-radius: 50%; 
+  animation: pulseBlue 2s infinite ease-in-out 0.5s; 
+}
+
+/* Lines ke andar Data Transfer (Glowing light) Animation */
+.line { 
+  width: 45px; 
+  height: 4px; 
+  background: rgba(0,0,0,0.05); 
+  position: relative; 
+  overflow: hidden; 
+  border-radius: 2px; 
+}
+
+.line::after {
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  left: -100%;
+  width: 50%; 
+  height: 100%;
+  /* Blue color ki glow jo line ke andar chalegi */
+  background: linear-gradient(90deg, transparent, rgba(99, 91, 255, 0.8), transparent);
+  animation: dataTransfer 1.5s infinite linear;
+}
+
+/* Animation Keyframes */
+@keyframes dataTransfer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 5px 15px rgba(150, 191, 72, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 10px 25px rgba(150, 191, 72, 0.5); transform: scale(1.05); }
+}
+
+@keyframes pulseBlue {
+  0%, 100% { box-shadow: 0 5px 15px rgba(99, 91, 255, 0.3); transform: scale(1); }
+  50% { box-shadow: 0 10px 30px rgba(99, 91, 255, 0.6); transform: scale(1.1); }
+}
+
+@keyframes pulseOrange {
+  0%, 100% { box-shadow: 0 5px 15px rgba(255, 153, 0, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 10px 25px rgba(255, 153, 0, 0.5); transform: scale(1.05); }
+}
+
+/* --- Rule Transformation Visual --- */
+.gear-icon { font-size: 70px; opacity: 0.8; }
+
+/* --- Sync Badge Visual --- */
+.sync-badge {
+  background: rgba(39, 201, 63, 0.1); border: 1px solid #27c93f; color: #27c93f; padding: 10px 25px; border-radius: 50px; font-weight: 700; display: flex; align-items: center; gap: 10px; box-shadow: 0 0 20px rgba(39, 201, 63, 0.2);
+}
+.live-dot {
+  width: 10px; height: 10px; background: #27c93f; border-radius: 50%; animation: pulse 1.5s infinite;
+}
+/* Yeh neechay wala pulse already majood tha badge ke liye */
+@keyframes pulseBadge {
+  0% { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(39, 201, 63, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(39, 201, 63, 0); }
+}
+.live-dot { animation: pulseBadge 1.5s infinite; }
+
+/* ==================================
+   Schema Validation FIXED Layout
+================================== */
+.card-validation { padding: 0; }
+.card-validation .card-content { padding: 30px 35px 0 35px; }
+
+.validation-visual {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: flex-start; 
+  padding-top: 15px; 
+  gap: 15px; 
+}
+
+/* Flicker-free Slideshow Container */
+.validation-slideshow {
+  width: 85%;
+  height: 130px; /* Thori choti height taake 5 fields fit aa sakain */
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.validation-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; /* Default hidden */
+  transition: opacity 0.8s ease-in-out; /* Smooth fade effect */
+}
+
+.validation-img.active {
+  opacity: 1; /* Jo image active hogi sirf wo dikhegi */
+}
+
+/* Glassmorphic SKU Validation Design */
+.validation-stack {
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Gap kam kiya taake 5 items asani se aa jayen */
+  margin-bottom: 5px;
+}
+
+.validate-box {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.4); /* Translucent background */
+  backdrop-filter: blur(10px); /* Peechay ka hissa blur karega */
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Halki si border */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* Soft shadow */
+}
+
+.bento-card:hover .validate-box {
+  transform: translateX(8px);
+}
+
+.check-icon { font-size: 13px; }
+
+/* ==================================
+   Responsive Design
+================================== */
+/* ==================================
+   Responsive Design (No Extra Space Fix)
+================================== */
+
+/* Tablet & Small Laptops (992px) */
+@media (max-width: 992px) {
+  .bento-grid { 
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+    /* Fixed 300px height hata di taake extra space na bache */
+    grid-template-rows: auto; 
+    grid-auto-rows: minmax(280px, auto); /* Content ke hisaab se height khud adjust hogi */
+    gap: 20px;
+  }
+  
+  .bento-wide { grid-column: span 2; }
+  .bento-tall { grid-row: span 1; grid-column: span 2; }
+  
+  /* Tablet par validation card ke elements ko center aur proper width dena */
+  .validation-visual { padding-bottom: 25px; }
+  .validation-slideshow { width: 75%; height: 160px; }
+  .validation-stack { width: 75%; }
+}
+
+/* Mobile Screens (768px) */
+@media (max-width: 768px) {
+  .bento-section { padding: 60px 15px; }
+  .bento-header h2 { font-size: 28px; }
+  
+  .bento-grid { 
+    grid-template-columns: 1fr; /* Sirf 1 column */
+    grid-template-rows: auto; 
+    grid-auto-rows: auto;
+  }
+  
+  .bento-wide, .bento-tall { grid-column: span 1; }
+  
+  /* Cards ke andar ki extra padding ko mobile ke liye kam kiya */
+  .bento-card {
+    padding: 25px;
+    min-height: auto; /* Height auto ki taake sirf content jitni jagah le */
+    gap: 25px; /* Text aur 3D image ke darmiyan fasla */
+  }
+  
+  .card-validation .card-content {
+    padding: 25px 25px 0 25px;
+  }
+
+  /* Images aur UI ko full width kiya taake space barabar lagay */
+  .validation-slideshow { width: 100%; height: 140px; }
+  .validation-stack { width: 100%; margin-bottom: 0; }
+}
+
+/* Extra Small Screens (iPhone SE etc - 480px) */
+@media (max-width: 480px) {
+  .bento-header h2 { font-size: 24px; }
+  .bento-header p { font-size: 14px; }
+  
+  .card-content h3 { font-size: 19px; }
+  .card-content p { font-size: 13px; }
+  
+  .validation-slideshow { height: 110px; }
+  .validate-box { font-size: 11px; padding: 6px 10px; }
+  .check-icon { font-size: 12px; }
+  
+  /* AI Mapping nodes ko thora chota kiya taake mobile screen se bahar na niklein */
+  .node { width: 40px; height: 40px; font-size: 14px; }
+  .line { width: 30px; }
+  
+  /* Rule Transformation / Sync Icon size adjust */
+  .gear-icon { font-size: 55px; }
+  .sync-badge { font-size: 12px; padding: 8px 20px; }
+}

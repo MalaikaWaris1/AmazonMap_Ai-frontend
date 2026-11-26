@@ -1,0 +1,339 @@
+.integrations-section {
+  padding: 100px 20px;
+  background-color: #e7f4ce;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  overflow: hidden;
+}
+
+.integrations-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.integrations-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 50px auto;
+}
+
+.integrations-badge {
+  display: inline-block;
+  background-color: rgba(99, 91, 255, 0.1);
+  color: #635bff;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.integrations-header h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.integrations-header h2 span {
+  color: #FF9900;
+}
+
+.integrations-header p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ==================================
+   Pill Navbar
+================================== */
+.pill-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.pill-tabs-container {
+  position: relative;
+  display: flex;
+  background: #e5e7eb;
+  padding: 6px;
+  border-radius: 50px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pill-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4b5563;
+  cursor: pointer;
+  z-index: 2;
+  transition: color 0.3s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.pill-btn.active {
+  color: #111827;
+}
+
+.active-pill-indicator {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: calc(33.333% - 4px);
+  height: calc(100% - 12px);
+  background: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+/* ==================================
+   Display Card
+================================== */
+.integration-display-card {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+  align-items: center;
+  background: #ffffff;
+  padding: 50px;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+}
+
+.flow-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  background: #f3f4f6;
+}
+
+.shopify-text { color: #638525; background: rgba(150, 191, 72, 0.15); }
+.ai-text { color: #0284c7; background: rgba(56, 189, 248, 0.15); }
+.amazon-text { color: #b36b00; background: rgba(255, 153, 0, 0.15); }
+
+.display-content h3 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.display-content p {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.flow-checks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flow-checks li {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Visual Box for Images */
+.display-visual {
+  height: 230px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+}
+
+.visual-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.image-placeholder-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.live-status-badge {
+  position: absolute;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 14px;
+  border-radius: 50px;
+  color: #111827;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.pulsing-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Responsive */
+/* ==================================
+   Responsive Design for All Screen Sizes
+================================== */
+
+/* Tablets & Medium Screens (992px aur us se chotay) */
+@media (max-width: 992px) {
+  .integration-display-card {
+    grid-template-columns: 1fr;
+    padding: 35px;
+    gap: 30px;
+  }
+  .display-visual {
+    height: 210px;
+  }
+}
+
+/* Mobile Screens (768px aur us se chotay) */
+@media (max-width: 768px) {
+  .integrations-section { 
+    padding: 60px 15px; 
+  }
+  
+  .integrations-header {
+    margin-bottom: 35px;
+  }
+
+  .integrations-header h2 { 
+    font-size: 28px; 
+  }
+
+  .integrations-header p {
+    font-size: 14px;
+  }
+
+  .pill-tabs-container { 
+    max-width: 100%; 
+  }
+
+  .pill-btn { 
+    font-size: 12px; 
+    padding: 10px 8px; 
+  }
+
+  .integration-display-card {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  .display-content h3 { 
+    font-size: 22px; 
+  }
+
+  .display-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .flow-checks li {
+    font-size: 13px;
+  }
+
+  .display-visual {
+    height: 170px;
+  }
+}
+
+/* Small Mobiles & Extra Small Screens (480px aur us se chotay) */
+@media (max-width: 480px) {
+  .integrations-section {
+    padding: 40px 10px;
+  }
+
+  .integrations-header h2 {
+    font-size: 22px;
+  }
+
+  .integrations-badge {
+    font-size: 10px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+
+  .pill-tabs-container {
+    padding: 3px;
+  }
+
+  .pill-btn {
+    font-size: 10px;
+    padding: 8px 4px;
+    font-weight: 600;
+  }
+
+  .integration-display-card {
+    padding: 20px 15px;
+  }
+
+  .display-content h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .display-content p, .flow-checks li {
+    font-size: 12px;
+  }
+
+  .display-visual {
+    height: 140px;
+  }
+
+  .live-status-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+    bottom: 10px;
+  }
+}

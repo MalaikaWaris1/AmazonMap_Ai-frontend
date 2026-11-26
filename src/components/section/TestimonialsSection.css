@@ -1,0 +1,174 @@
+.testimonials-section {
+  padding: 80px 20px;
+  background-color: #ffffff; /* Clean white background */
+  font-family: 'Inter', sans-serif;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.testimonials-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonials-heading {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 50px;
+  letter-spacing: -0.5px;
+}
+
+/* Flex Row for Logos (No cards/boxes) */
+.ratings-flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 2px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.rating-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 150px;
+}
+
+/* Logo container jahan aap image lagayengi */
+.logo-container {
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.platform-logo {
+  max-height: 30px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Jab tak image nahi lagti, text style dikhane ke liye */
+.logo-placeholder-text {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #111827;
+}
+
+.shopify-text { color: #96bf48; }
+.amazon-text { color: #FF9900; }
+.g2-text { color: #111827; }
+.capterra-text { color: #111827; }
+.getapp-text { color: #111827; }
+
+.stars {
+  color: #fbbf24; /* Star Yellow */
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.review-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.divider-line {
+  width: 100%;
+  max-width: 1000px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0 auto 50px auto;
+}
+
+/* Testimonial Quote Box */
+.testimonial-quote-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote-text {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.quote-author {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 12px;
+}
+
+.large-stars {
+  font-size: 18px;
+}
+
+/* Responsive */
+/* ==================================
+   Responsive Design for All Screen Sizes
+================================== */
+
+/* Tablets & Small Laptops (992px aur us se chotay) */
+@media (max-width: 992px) {
+  .ratings-flex-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tablet par 3 columns ki grid */
+    gap: 30px;
+    justify-items: center;
+  }
+  .rating-col {
+    min-width: unset;
+    width: 100%;
+  }
+}
+
+/* Mobile Screens (768px aur us se chotay) - Har row mein 2 columns */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 60px 15px;
+  }
+  
+  .testimonials-heading {
+    font-size: 22px;
+    margin-bottom: 35px;
+  }
+
+  .ratings-flex-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Mobile par strictly 1 row mein 2 items */
+    gap: 20px;
+  }
+
+  .quote-text {
+    font-size: 17px;
+  }
+}
+
+/* Extra Small / Very Small Screens (400px aur us se chotay) */
+@media (max-width: 400px) {
+  .ratings-flex-row {
+    grid-template-columns: repeat(2, 1fr); /* Bohat choti screen par bhi 2 columns barkarar rahenge */
+    gap: 15px;
+  }
+  
+  .logo-placeholder-text {
+    font-size: 15px; /* Text thora compact kiya taake fit aa jaye */
+  }
+
+  .stars {
+    font-size: 13px;
+  }
+
+  .review-count {
+    font-size: 11px;
+  }
+}

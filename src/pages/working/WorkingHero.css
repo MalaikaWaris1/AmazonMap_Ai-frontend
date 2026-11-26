@@ -1,0 +1,240 @@
+@import './theme.css';
+
+.wk-hero {
+  position: relative; /* Wave ko bottom par fit karne ke liye zaroori hai */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Background ko Header ke peeche le jane ke liye */
+  margin-top: -90px; 
+  padding-top: calc(clamp(72px, 11vw, 128px) + 90px);
+  
+  /* Wave ke liye neechay extra space rakhi hai taake content wave par na aaye */
+  padding-bottom: 180px; 
+  overflow: hidden; /* Extra space ko bahar nikalne se rokne ke liye */
+}
+
+/* Content ko wave ke upar rakhne ke liye z index */
+.wk-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   Wave Shape Divider Styling
+========================================= */
+.hero-wave {
+  position: absolute;
+  bottom: -2px; /* -2px diya hai taake bottom par koi white line/gap na bache */
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 1;
+}
+
+.hero-wave svg {
+  display: block;
+  width: 100%;
+  height: 140px; /* Desktop par wave ki height */
+}
+
+/* =========================================
+   Text & Button Styling
+========================================= */
+/* .wk-centered-eyebrow {
+  text-align: start;
+  font-family: var(--font-display, sans-serif);
+  font-weight: 800;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #635bff 0%, #FF9900 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+} */
+
+.wk-hero__grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(32px, 6vw, 64px);
+  align-items: center;
+   margin-top: 150px;
+}
+
+.wk-hero__copy {
+  max-width: 620px;
+}
+
+.wk-hero__headline {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+  line-height: 1.14;
+  color: var(--ink);
+  margin: 0 0 0.55em;
+  letter-spacing: -0.01em;
+}
+
+.wk-hero__sub {
+  font-size: 1.08rem;
+  max-width: 54ch;
+}
+
+.wk-hero__cta-row {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.wk-hero__cta {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--white);
+  background: #96bf48;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 16px 30px -14px rgba(252, 189, 29, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wk-hero__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 34px -14px rgba(99, 91, 255, 0.6);
+}
+
+.wk-hero__cta-note {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+/* =========================================
+   Video / Media Styling
+========================================= */
+.wk-hero__media {
+  position: relative;
+}
+
+.wk-hero__video {
+  position: relative;
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
+  aspect-ratio: 16 / 11;
+  background: linear-gradient(160deg, #635bff 0%, #100e28 100%);
+  box-shadow: var(--shadow-float, 0 20px 40px rgba(0,0,0,0.1));
+  animation: wkFloat 7s ease-in-out infinite;
+}
+
+.wk-hero__video-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.wk-hero__video-glass {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  background: linear-gradient(180deg, rgba(30, 27, 65, 0.15) 0%, rgba(16, 14, 40, 0.55) 100%);
+  backdrop-filter: blur(2px);
+}
+
+.wk-hero__play {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wk-hero__play:hover {
+  transform: scale(1.06);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.wk-hero__play-triangle {
+  width: 0;
+  height: 0;
+  margin-left: 4px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 20px solid #ffffff;
+}
+
+.wk-hero__video-label {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+@keyframes wkFloat {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* =========================================
+   Mobile Responsiveness (Small Screens)
+========================================= */
+@media (max-width: 900px) {
+  .wk-hero {
+    /* Mobile par image ko cut hone se bachanay ke liye position adjust ki hai */
+    background-position: left center; 
+    padding-top: 140px; 
+    padding-bottom: 140px; 
+  }
+  
+  .wk-hero__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .wk-hero__copy {
+    max-width: 100%;
+  }
+
+ 
+  .wk-hero__headline {
+    font-size: 2.2rem;
+  }
+
+  /* Wave ki height mobile par kam kar di hai taake ziada jagah na le */
+  .hero-wave svg {
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wk-hero__headline {
+    font-size: 1.8rem;
+  }
+  .wk-hero__sub {
+    font-size: 1rem;
+  }
+  .hero-wave svg {
+    height: 50px;
+    
+  }
+}

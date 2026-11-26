@@ -1,0 +1,307 @@
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.hero-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out; /* Smooth transition */
+  z-index: 1;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Image 1 (Ranty) ki tarhan white soft gradient taake text parha jaye */
+  background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 45%, transparent 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  margin-top: 60px; /* Header ke liye space */
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  color: #FF9900;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.1;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  color: #555;
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0 0 40px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Image 6a5b9f style buttons */
+.btn-primary1 {
+  background-color: #96bf48;
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary1:hover {
+  background-color: #FF9900; /* Hover per Amazon Orange */
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 153, 0, 0.3);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: #96bf48; /* Hover per Shopify Green border */
+  color: #96bf48;
+}
+
+
+/* Slider Dots (Expanding Pill Style) */
+.slide-indicators {
+  position: absolute;
+  bottom: 40px;
+  left: 70%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 8px; /* Gap thora kam rakha hai taake design tight lagay */
+  align-items: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px; /* Fully rounded corners */
+  background-color: rgba(0, 0, 0, 0.2); /* Inactive dot color */
+  cursor: pointer;
+  /* Width aur color par smooth animation */
+  transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.4s ease;
+}
+
+.dot.active {
+  width: 32px; /* Active hone par dot lamba (expand) ho jayega */
+  background-color: #FF9900; /* Amazon Dark Blue */
+}
+
+/* Hover effect on inactive dots */
+.dot:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+/* Wave Shape Divider Settings */
+/* Wave Shape Divider Settings */
+.hero-wave {
+  position: absolute;
+  bottom: -40px; /* Neechay ka gap cover karne ke liye thora aur neechay kiya hai */
+  left: 0;
+  width: 100%; /* Ensure it spans the entire width */
+  overflow: hidden;
+  line-height: 0; /* Gap khatam karne ka main tareeqa */
+  z-index: 2; /* Text/buttons ke peechay rakhne ke liye */
+  transform: translateY(1px); /* Sub-pixel rendering errors fix karne ke liye */
+}
+
+.hero-wave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px); /* Exact screen edges cover karne ke liye thora sa stretch */
+  height: 120px; /* Aap apni marzi se height set kar sakti hain */
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+   Responsive Design - Tablets (992px)
+========================================= */
+@media (max-width: 992px) {
+  .hero-content {
+    margin-top: 2px;
+    padding: 0 30px;
+  }
+  
+  .hero-content h1 {
+    font-size: 50px;
+  }
+  
+  .hero-content p {
+    font-size: 18px;
+    max-width: 90%;
+  }
+  .slide-indicators {
+    bottom: 70px;
+    left: 80%;
+  }
+}
+
+/* =========================================
+   Responsive Design - Mobile Screens (768px)
+========================================= */
+/* =========================================
+   Responsive Design - Mobile Screens (768px)
+========================================= */
+@media (max-width: 768px) {
+  /* Wave ko chupne se bachanay ke liye height ko flexible kiya */
+  .hero-section {
+    min-height: 100vh;
+    height: auto; 
+    padding-bottom: 80px; /* Neechay wave aur dots ke liye space */
+  }
+
+  .hero-content {
+    padding: 0 15px;
+    margin-top: 50px; /* Header ke neechay fasla */
+    text-align: center;
+  }
+
+  .badge {
+    font-size: 12px;
+    padding: 6px 14px;
+    margin-bottom: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 34px; /* Heading size munasib rakha */
+    margin-bottom: 12px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+    margin-bottom: 25px;
+    max-width: 100%;
+  }
+
+  /* ✅ Buttons Fix: Barray buttons ko limit kiya aur center kiya */
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Buttons center mein aayenge */
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn-primary1, .btn-secondary {
+    width: 100%;
+    max-width: 260px; /* Yahan button ka maximum size set kar diya hai */
+    padding: 12px 20px;
+    font-size: 15px;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+   background: linear-gradient(to bottom, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.3) 100%);
+  }
+
+  /* ✅ Wave Fix: Height kam ki taake sleek lagay */
+  .hero-wave {
+    bottom: 0; /* Wave ko bilkul bottom par fix kiya */
+  }
+  
+  .hero-wave svg {
+    height: 85px;
+  }
+  
+  .slide-indicators {
+    bottom: 80px;
+  }
+}
+
+/* =========================================
+   Responsive Design - Extra Small Mobile (480px)
+========================================= */
+@media (max-width: 480px) {
+  .hero-content {
+    margin-top: 60px;
+  }
+  
+  .hero-content h1 {
+    font-size: 28px; /* Chhoti screens ke liye mazeed chota */
+    letter-spacing: -0.5px;
+  }
+  
+  .hero-content p {
+    font-size: 14px;
+  }
+  
+  .btn-primary1, .btn-secondary {
+    max-width: 240px; /* iPhone SE jaisi screens par buttons mazeed theek rahenge */
+  }
+
+  .hero-wave svg {
+    height: 85px;
+  }
+  
+  .slide-indicators {
+    bottom: 70px;
+  }
+}
+@media (max-width: 380px){
+    .hero-content {
+    margin-top: 30px;
+  }
+}

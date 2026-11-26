@@ -1,0 +1,395 @@
+/* ==================================
+   Top Announcement Banner CSS
+================================== */
+.top-announcement-banner {
+  background: linear-gradient(135deg, #232F3E 0%, #131921 100%);
+  color: #ffffff;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 1000;
+}
+
+/* ==================================
+   General Header Settings (Transparent & Over Hero)
+================================== */
+.custom-header {
+  position: absolute; /* Banner ke foran neechay se shuru hoga aur hero image ke upar transparent rahega */
+  top: 37px; /* Banner ki height ke barabar taake banner ke bilkul sath jur jaye */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  background: transparent; /* Bilkul transparent taake background image peeche se dikhe */
+}
+
+.custom-header.scrolled {
+  position: fixed; /* Scroll karne par top par fix ho jaye */
+  top: 0;
+  background-color: rgba(238, 166, 94, 0.314);
+  backdrop-filter: blur(10px);
+  padding: 15px 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Wrapper for Logo and Hamburger menu to stay together */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ==================================
+   Modern Logo Styling
+================================== */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.logo-icon {
+  background: linear-gradient(135deg, #FF9900 0%, #ff8800 100%);
+  color: white;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 22px;
+  font-style: italic;
+  box-shadow: 0 4px 10px rgba(255, 153, 0, 0.3);
+}
+
+.logo h1 {
+  font-size: 26px;
+  color: #1a1a1a;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.logo-highlight {
+  color: #96bf48;
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.5px;
+  margin-left: 1px;
+}
+
+/* ==================================
+   Navigation Links (Desktop)
+================================== */
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 15px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #96bf48; 
+}
+
+.nav-links > ul > li > a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #FF9900;
+  transition: width 0.3s ease;
+}
+
+.nav-links > ul > li > a:hover::after {
+  width: 100%;
+}
+
+/* ==================================
+   Dropdown Menu (Desktop)
+================================== */
+.dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.dropbtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 0;
+  cursor: pointer;
+  color: #333;
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.dropbtn:hover {
+  color: #96bf48; 
+}
+
+.dropdown-content {
+  visibility: hidden;
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  min-width: 260px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1000;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-content a {
+  color: #444;
+  padding: 12px 16px;
+  display: block;
+  font-size: 14.5px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+
+.dropdown-content a::after {
+  display: none !important;
+}
+
+.dropdown-content a:hover {
+  background-color: #fff9f0;
+  color: #FF9900;
+  padding-left: 22px;
+}
+
+/* ==================================
+   Auth Buttons
+================================== */
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-login {
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  font-size: 15px;
+  transition: color 0.3s;
+}
+
+.btn-login:hover {
+  color: #FF9900;
+}
+
+.btn-signin {
+  text-decoration: none;
+  background-color: #232F3E; 
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.btn-signin:hover {
+  background-color: #96bf48; 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(150, 191, 72, 0.4);
+}
+
+/* Hide Hamburger Toggle on Desktop */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ==================================
+   Responsive Design (Mobile Dribbble Layout)
+================================== */
+@media (max-width: 992px) {
+  .header-container {
+    padding: 0 20px;
+  }
+
+  .nav-links ul { 
+    display: none; 
+  }
+
+  .mobile-toggle { 
+    display: flex;
+    align-items: center; 
+    padding: 0;
+  }
+  
+  .logo h1 { font-size: 20px; }
+  .logo-icon { width: 30px; height: 30px; font-size: 18px; }
+  .logo { gap: 8px; }
+
+  .nav-links.mobile-active ul {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; 
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    z-index: 1000;
+    gap: 0;
+  }
+
+  .nav-links.mobile-active ul li {
+    width: 100%;
+    margin-bottom: 5px; 
+  }
+
+  .nav-links.mobile-active ul li a, 
+  .nav-links.mobile-active .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left; 
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 15px; 
+    color: #444;
+    border-left: 4px solid #96bf48;
+    background-color: transparent;
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .nav-links.mobile-active ul li a:hover,
+  .nav-links.mobile-active .dropbtn:hover {
+    border-left: 4px solid #FF9900;
+    background-color: #fff9f0;
+    color: #FF9900;
+    padding-left: 20px;
+  }
+
+  .nav-links.mobile-active .dropdown {
+    width: 100%;
+    display: block;
+    padding-bottom: 0;
+    height: auto; 
+  }
+
+  .nav-links.mobile-active .dropdown-content {
+    display: none; 
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 5px 0 5px 20px; 
+    min-width: 100%;
+    visibility: visible; 
+    opacity: 1;
+  }
+
+  .nav-links.mobile-active .dropdown.mobile-open .dropdown-content {
+    display: block;
+  }
+
+  .nav-links.mobile-active .dropdown-content a {
+    font-size: 13.5px;
+    font-weight: 500;
+    border-left: 2px solid #FF9900;
+    padding: 10px 15px;
+    margin-bottom: 2px;
+  }
+
+  .nav-links.mobile-active .dropdown-content a:hover {
+    border-left: 2px solid #96bf48;
+    background-color: #f6fbf0;
+    color: #96bf48;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-login { 
+    display: none; 
+  }
+  .btn-signin { 
+    padding: 8px 16px; 
+    font-size: 13px; 
+  }
+}
+@media (max-width: 380px) {
+  .header-container {
+    padding: 22px 10px; /* Padding ko kam aur balanced kar diya hai taake height zyada na ho */
+  }
+  
+  .logo h1 {
+    font-size: 17px; /* Chhoti screen par logo text ko mazeed fit kiya */
+  }
+  
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 15px;
+  }
+
+  .btn-signin {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}

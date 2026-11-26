@@ -1,0 +1,9 @@
+@import './theme.css';
+
+.wk-step--validation {
+  background: var(--bg-white);
+}
+
+.wk-step--validation .wk-step__image-frame {
+  background: linear-gradient(160deg, #f4f4f7 0%, #e7e6ee 100%);
+}

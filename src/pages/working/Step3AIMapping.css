@@ -1,0 +1,19 @@
+@import './theme.css';
+
+.wk-step--ai {
+  background: var(--bg-white);
+}
+
+.wk-step--ai .wk-eyebrow-num {
+  color: var(--ai-purple);
+}
+
+.wk-step--ai .wk-step__flow-text {
+  background: rgba(99, 91, 255, 0.08);
+  color: var(--ai-purple-dark);
+  border-left: 2px solid var(--ai-purple);
+}
+
+.wk-step--ai .wk-step__image-frame {
+  background: linear-gradient(160deg, var(--ai-purple-dark) 0%, #2a2566 100%);
+}

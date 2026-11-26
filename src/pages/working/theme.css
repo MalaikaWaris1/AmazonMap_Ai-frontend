@@ -1,0 +1,187 @@
+/*
+  Design tokens for the "How It Works" page.
+  Imported by every section stylesheet in this folder so the
+  zig-zag layout, colors and type stay consistent across steps.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+:root {
+  /* Brand colors */
+  --shopify-green: #96bf48;
+  --shopify-green-deep: #6f9433;
+  --amazon-orange: #ff9900;
+  --amazon-orange-deep: #cc7a00;
+  --ai-purple: #635bff;
+  --ai-purple-dark: #1e1b4b;
+  --error-red: #ef4444;
+
+  /* Neutrals */
+  --ink: #15132a;
+  --ink-soft: #514c6b;
+  --ink-faint: #8b869f;
+  --white: #ffffff;
+  --border-soft: rgba(21, 19, 42, 0.09);
+
+  /* Section backgrounds (alternating, full-bleed) */
+  --bg-white: #ffffff;
+  --bg-purple-soft: #f5f3f9;
+  --bg-green-soft: #f2f8ed;
+  --bg-gray-soft: #f9fafb;
+  --bg-orange-soft: #fff4e6;
+  --bg-blue-soft: #eef0fb;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  /* Layout */
+  --content-max: 1160px;
+  --gutter: clamp(24px, 6vw, 72px);
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --shadow-float: 0 30px 60px -25px rgba(30, 27, 65, 0.35);
+  --shadow-soft: 0 18px 40px -22px rgba(21, 19, 42, 0.25);
+}
+
+/* Shared section scaffolding used by every step component */
+.wk-section {
+  width: 100%;
+  padding: clamp(56px, 9vw, 108px) 0;
+}
+
+.wk-container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  box-sizing: border-box;
+}
+
+.wk-eyebrow-num {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.wk-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.15;
+  margin: 0.4em 0 0.5em;
+}
+
+.wk-body {
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  max-width: 62ch;
+}
+
+.wk-image-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-float);
+  animation: wkFloat 6s ease-in-out infinite;
+}
+
+.wk-image-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes wkFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Shared zig-zag step layout — used by Step1..Step6 components.
+   Each step's own stylesheet sets background + accent colors and,
+   where needed, reverses the column order for the zig-zag. */
+.wk-step__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 72px);
+  align-items: center;
+}
+
+.wk-step__title {
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+}
+
+.wk-step__image-frame {
+  aspect-ratio: 4 / 3;
+  background: var(--bg-gray-soft);
+}
+
+.wk-step__bullets {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.wk-step__bullets li {
+  font-family: var(--font-body);
+  color: var(--ink-soft);
+  line-height: 1.5;
+  padding-left: 1.3rem;
+  position: relative;
+  font-size: 0.98rem;
+}
+
+.wk-step__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.wk-step__flow-text {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  background: var(--bg-gray-soft);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.1rem;
+  margin-top: 1.4rem;
+  line-height: 1.7;
+}
+
+.wk-step--reverse .wk-step__grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.wk-step--reverse .wk-step__copy {
+  order: 2;
+}
+
+.wk-step--reverse .wk-step__media {
+  order: 1;
+}
+
+@media (max-width: 900px) {
+  .wk-step__grid {
+    grid-template-columns: 1fr;
+  }
+  .wk-step--reverse .wk-step__copy,
+  .wk-step--reverse .wk-step__media {
+    order: initial;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * , *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,267 @@
+.multichannel-section {
+  padding: 100px 20px;
+  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  overflow: hidden;
+}
+
+.multichannel-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left Movable Visual Cards Container */
+.multichannel-visual {
+  position: relative;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Base Floating Card Styling */
+.floating-card {
+  position: absolute;
+  background: #ffffff;
+  border: 2px solid #111827;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 8px 8px 0px #111827; 
+  width: 200px;
+  cursor: grab;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+}
+
+.floating-card:active {
+  cursor: grabbing;
+}
+
+/* Individual Card Positions & Floating Animations */
+.card-1 {
+  top: 15px;
+  left: 20px;
+  transform: rotate(-6deg);
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.main-card {
+  top: 80px;
+  left: 100px;
+  width: 220px;
+  background: #fdfbf7;
+  z-index: 2;
+  transform: rotate(2deg);
+  animation: floatFast 5s ease-in-out infinite alternate;
+}
+
+.card-3 {
+  bottom: 10px;
+  right: 30px;
+  transform: rotate(6deg);
+  animation: floatSlow 7s ease-in-out infinite 1s;
+}
+
+/* Hover Par Cards Mazeed Move Karenge aur Upar Uthange */
+.card-1:hover {
+  transform: translateY(-12px) rotate(-2deg) scale(1.05);
+  box-shadow: 12px 16px 0px #635bff; /* Hover par purple shadow */
+}
+
+.main-card:hover {
+  transform: translateY(-15px) rotate(0deg) scale(1.05);
+  box-shadow: 12px 16px 0px #FF9900; /* Hover par amazon orange shadow */
+}
+
+.card-3:hover {
+  transform: translateY(-12px) rotate(2deg) scale(1.05);
+  box-shadow: 12px 16px 0px #96bf48; /* Hover par shopify green shadow */
+}
+
+/* Continuous Floating Keyframes */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(-6deg); }
+  50% { transform: translateY(-10px) rotate(-4deg); }
+}
+
+@keyframes floatFast {
+  0%, 100% { transform: translateY(0px) rotate(2deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+}
+
+.card-top-icon {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.bar {
+  height: 10px;
+  background: #635bff; 
+  border-radius: 4px;
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+.bar.short { width: 45%; }
+.bar.medium { width: 75%; }
+.bar.long { width: 95%; background: #FF9900; }
+
+/* Right Content */
+.multichannel-content h2 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.multichannel-content p {
+  font-size: 16px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.mc-action-btn {
+  background-color: #635bff;
+  color: #ffffff;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(99, 91, 255, 0.3);
+}
+
+.mc-action-btn:hover {
+  background-color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+/* ==================================
+   Responsive Design for All Screens
+================================== */
+
+@media (max-width: 992px) {
+  .multichannel-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .multichannel-visual {
+    height: 340px;
+  }
+  .multichannel-content h2 {
+    font-size: 32px;
+  }
+}
+
+/* Tablet & Mobile Screens (768px aur us se chotay) */
+@media (max-width: 768px) {
+  .multichannel-section {
+    padding: 60px 15px;
+  }
+  
+  .multichannel-visual {
+    height: 280px; /* Height kam ki taake mobile par zayada lamba na lage */
+  }
+
+  .floating-card {
+    width: 150px; /* Cards ka size chota kiya */
+    padding: 15px;
+    box-shadow: 5px 5px 0px #111827; /* Shadow bhi screen ke mutabiq adjust ki */
+    border-radius: 14px;
+  }
+
+  .card-1 {
+    top: 10px;
+    left: 5px;
+  }
+
+  .main-card {
+    top: 45px;
+    left: 75px;
+    width: 165px;
+  }
+
+  .card-3 {
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .card-top-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .bar {
+    height: 8px;
+    margin-bottom: 6px;
+  }
+
+  .multichannel-content h2 {
+    font-size: 26px;
+  }
+
+  .multichannel-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Small Mobile & iPhone SE (480px aur us se chotay) */
+@media (max-width: 480px) {
+  .multichannel-visual {
+    height: 230px;
+  }
+
+  .floating-card {
+    width: 125px;
+    padding: 10px;
+    box-shadow: 4px 4px 0px #111827;
+    border-radius: 12px;
+  }
+
+  .card-1 {
+    top: 5px;
+    left: 0px;
+  }
+
+  .main-card {
+    top: 35px;
+    left: 55px;
+    width: 135px;
+  }
+
+  .card-3 {
+    bottom: 0px;
+    right: 0px;
+  }
+
+  .card-top-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .bar {
+    height: 6px;
+    margin-bottom: 4px;
+  }
+
+  .multichannel-content h2 {
+    font-size: 22px;
+  }
+
+  .mc-action-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 100%; /* Mobile par button full width ho jayega taake click karne mein asani ho */
+    text-align: center;
+  }
+}
