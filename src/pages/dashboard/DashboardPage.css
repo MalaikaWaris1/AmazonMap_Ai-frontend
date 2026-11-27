@@ -268,7 +268,22 @@
   gap: 20px;
   margin-bottom: 20px;
 }
+.account-heading-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 
+.account-ws-tag {
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #f8fafc;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-weight: 500;
+}
 .account-section-header h3 {
   margin: 0;
   font-size: 20px;

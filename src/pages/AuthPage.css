@@ -1,1 +1,512 @@
-@import "../styles/pages.css";
+:root {
+    --shopify-green: #008060;
+    --shopify-green-hover: #006e52;
+    --shopify-forest: #064e3b;
+    --shopify-emerald: #10b981;
+    --shopify-lime: #95bf47;
+    --amazon-dark: #061621;
+    --amazon-amber: #ff9900;
+    --text-dark: #111827;
+    --text-muted: #4b5563;
+}
+
+.auth-layout {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #ffffff;
+}
+
+/* ================= LEFT FORM PANEL (Scrollable without scrollbar) ================= */
+.auth-left-panel {
+    width: 440px;
+    min-width: 380px;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE & Edge */
+    background: #ffffff;
+    padding: 36px 48px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+.auth-left-panel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari & Opera */
+}
+
+.auth-form-container {
+    width: 100%;
+    max-width: 340px;
+    margin: auto;
+}
+
+/* Custom Logo Image */
+.auth-brand {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.auth-brand-logo {
+    height: 50px;
+    width: auto;
+    max-width: 250px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    filter: brightness(1.07) contrast(1.06);
+}
+
+/* Heading & Subtext */
+.auth-title {
+    font-size: 27px;
+    font-weight: 600;
+    color: var(--shopify-green);
+    margin: 0 0 8px 0;
+    line-height: 1.25;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: var(--text-dark);
+    font-weight: 500;
+    margin: 0 0 22px 0;
+}
+
+.auth-link-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--shopify-green);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.auth-link-btn:hover {
+    text-decoration: underline;
+}
+
+/* Status Notification Banner */
+.auth-banner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.auth-banner--success {
+    background-color: #e6f7f1;
+    border-left: 4px solid var(--shopify-green);
+    color: #064e3b;
+}
+
+.auth-banner--error {
+    background-color: #fef2f2;
+    border-left: 4px solid #dc2626;
+    color: #991b1b;
+}
+
+.auth-banner-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.auth-banner--success .auth-banner-icon {
+    background-color: var(--shopify-green);
+    color: #ffffff;
+}
+
+.auth-banner--error .auth-banner-icon {
+    background-color: #dc2626;
+    color: #ffffff;
+}
+
+/* Google OAuth Button */
+.auth-google-btn {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: #ffffff;
+    border: 1px solid #9ca3af;
+    border-radius: 6px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.auth-google-btn:hover:not(:disabled) {
+    background-color: #f9fafb;
+    border-color: var(--shopify-green);
+}
+
+/* Divider */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 22px 0;
+    color: #6b7280;
+    font-size: 12.5px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.auth-divider span {
+    padding: 0 12px;
+}
+
+/* Form Inputs */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auth-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.auth-forgot-link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--shopify-green);
+    cursor: pointer;
+}
+
+.auth-forgot-link:hover {
+    text-decoration: underline;
+}
+
+.auth-field input {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1.5px solid #9ca3af;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-dark);
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.auth-field input:focus {
+    outline: none;
+    border-color: var(--shopify-green);
+    box-shadow: 0 0 0 3px rgba(0, 128, 96, 0.14);
+}
+
+/* Password Eye Icon Button */
+.auth-password-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.auth-password-wrap input {
+    padding-right: 42px;
+}
+
+.auth-password-wrap input::-ms-reveal,
+.auth-password-wrap input::-ms-clear {
+    display: none;
+}
+
+.auth-eye-btn {
+    position: absolute;
+    right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: color 0.15s ease;
+}
+
+.auth-eye-btn:hover {
+    color: var(--text-dark);
+}
+
+/* Submit Button */
+.auth-submit-btn {
+    margin-top: 6px;
+    height: 42px;
+    padding: 0 22px;
+    align-self: flex-start;
+    background-color: var(--shopify-green);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+    background-color: var(--shopify-green-hover);
+}
+
+.auth-submit-btn:disabled {
+    background-color: #e5e7eb;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.auth-demo-hint,
+.auth-demo-footer {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* ================= RIGHT HERO PANEL (Fixed 100vh) ================= */
+.auth-right-panel {
+    flex: 1;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--amazon-dark);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 64px 72px;
+    color: #ffffff;
+}
+
+.auth-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 390px;
+}
+
+.auth-hero-heading {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.22;
+    margin: 0 0 18px 0;
+    letter-spacing: -0.4px;
+    color: #ffffff;
+}
+
+.auth-hero-text {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #cbd5e1;
+    margin: 0 0 28px 0;
+}
+
+.auth-hero-link {
+    background: none;
+    border: none;
+    border-bottom: 2px solid var(--amazon-amber);
+    padding: 0 0 5px 0;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.auth-hero-link:hover {
+    color: var(--amazon-amber);
+}
+
+/* Clean Architectural Geometric Tiles on Far Right */
+.auth-geometric-grid {
+    position: absolute;
+    right: -190px;
+    top: 50%;
+    width: 560px;
+    height: 640px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    transform: translateY(-50%) rotate(-18deg);
+    pointer-events: none;
+}
+
+.geo-tile {
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.geo-tile--deep {
+    background-color: #09202e;
+}
+
+.geo-tile--forest {
+    background-color: #064e3b;
+}
+
+.geo-tile--emerald {
+    background-color: #008060;
+}
+
+.geo-tile--lime {
+    background-color: #95bf47;
+}
+
+.geo-tile--amber {
+    background-color: #ff9900;
+}
+
+/* ================= PASSWORD STRENGTH & CHECKLIST ================= */
+.pwd-strength-box {
+    margin-top: 8px;
+    padding: 11px 12px;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.pwd-strength-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #475569;
+    margin-bottom: 7px;
+}
+
+.pwd-level-text--weak {
+    color: #dc2626;
+}
+
+.pwd-level-text--medium {
+    color: #d97706;
+}
+
+.pwd-level-text--strong {
+    color: var(--shopify-green);
+}
+
+.pwd-char-count {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.pwd-meter-bars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.pwd-meter-seg {
+    height: 4px;
+    border-radius: 999px;
+    background-color: #e2e8f0;
+    transition: background-color 0.2s ease;
+}
+
+.pwd-meter-seg--weak {
+    background-color: #dc2626;
+}
+
+.pwd-meter-seg--medium {
+    background-color: var(--amazon-amber);
+}
+
+.pwd-meter-seg--strong {
+    background-color: var(--shopify-green);
+}
+
+.pwd-rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pwd-rule-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #64748b;
+    transition: color 0.15s ease;
+}
+
+.pwd-rule-item--passed {
+    color: var(--shopify-green);
+    font-weight: 500;
+}
+
+.pwd-rule-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .auth-geometric-grid {
+        opacity: 0.25;
+    }
+}
+
+@media (max-width: 820px) {
+    .auth-right-panel {
+        display: none;
+    }
+    .auth-left-panel {
+        width: 100%;
+        min-width: unset;
+        padding: 32px 24px;
+    }
+}

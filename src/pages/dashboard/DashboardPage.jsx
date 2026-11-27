@@ -30,6 +30,10 @@ import {
   StepFooter,
 } from "../../components/layout/DashboardLayout.jsx";
 import { apiService } from "../../api/apiService.js";
+import { getConnectedShopifyStore } from "../../api/shopifyService.js";
+import { getAmazonStatusApi } from "../../api/amazonService.js";
+import { useAuth } from "../../context/AuthContext.jsx";
+import { useWorkspace } from "../../context/WorkspaceContext.jsx";
 import { usePipeline } from "../../context/PipelineContext.jsx";
 import "./DashboardPage.css";
 
@@ -57,6 +61,8 @@ export default function DashboardPage() {
   const [refresh, setRefresh] = useState(0);
 
   const navigate = useNavigate();
+  const { accessToken } = useAuth();
+  const { activeWorkspace } = useWorkspace();
   const { unlocked, unlock } = usePipeline();
 
   useEffect(() => {
@@ -75,35 +81,88 @@ export default function DashboardPage() {
       if (active) setActivity(data);
     });
 
-    apiService
-      .getSettings()
-      .then(({ accounts }) => {
+    // Load real connected Shopify & Amazon accounts for the active workspace
+    const loadWorkspaceConnections = async () => {
+      try {
+        const workspaceId = activeWorkspace?._id;
+        const liveAccounts = [];
+
+        if (workspaceId) {
+          const localShopify = getConnectedShopifyStore(workspaceId);
+          if (localShopify?.isActive) {
+            liveAccounts.push({
+              name: "Shopify",
+              apiLabel: "Admin GraphQL API",
+              detail: localShopify.shopDomain,
+              connected: true,
+            });
+          }
+
+          try {
+            const amzStatus = await getAmazonStatusApi({ workspaceId }, accessToken);
+            if (amzStatus?.connected) {
+              liveAccounts.push({
+                name: "Amazon SP-API",
+                apiLabel: "Selling Partner API (SP-API)",
+                detail: `${amzStatus.nickname || "Sandbox Store"} · ${amzStatus.marketplaceId}`,
+                connected: true,
+              });
+            }
+          } catch {
+            // Fall back to settings API below if backend status endpoint is offline
+          }
+        }
+
+        if (liveAccounts.length > 0) {
+          if (active) setConnectedAccounts(liveAccounts);
+          return;
+        }
+
+        // Fallback to mock settings accounts if user opened dashboard directly
+        const { accounts } = await apiService.getSettings();
         if (!active) return;
 
         setConnectedAccounts(
-          accounts.filter((account) => {
-            const name = account.name.toLowerCase();
-            return (
-              account.connected &&
-              (name.includes("shopify") || name.includes("amazon"))
-            );
-          })
+          accounts
+            .filter((account) => {
+              const name = account.name.toLowerCase();
+              return (
+                account.connected &&
+                (name.includes("shopify") || name.includes("amazon"))
+              );
+            })
+            .map((account) => ({
+              ...account,
+              apiLabel: account.name.toLowerCase().includes("shopify")
+                ? "Admin GraphQL API"
+                : "Selling Partner API (SP-API)",
+            }))
         );
-      })
-      .catch(() => {
+      } catch {
         if (active) setAccountsError(true);
-      });
+      }
+    };
+
+    loadWorkspaceConnections();
 
     return () => {
       active = false;
     };
-  }, [range, refresh]);
+  }, [range, refresh, activeWorkspace, accessToken]);
 
-  const openStage = (path) => {
-    const step =
-      ["/import", "/clean", "/mapping", "/review", "/publish"].indexOf(path) + 3;
+ const openStage = (path) => {
+    const stagePaths = [
+      "/import",
+      "/clean",
+      "/mapping",
+      "/transform",
+      "/validation",
+      "/review",
+      "/publish",
+    ];
+    const step = stagePaths.indexOf(path) + 3;
 
-    if (step > 0) {
+    if (step >= 3) {
       if (step > unlocked) unlock(step);
       navigate(path);
     }
@@ -450,13 +509,20 @@ export default function DashboardPage() {
       <section className="account-section" aria-label="Account connections">
         <div className="account-section-header">
           <div>
-            <h3>Account connections</h3>
+            <div className="account-heading-row">
+              <h3>Account connections</h3>
+              {activeWorkspace && (
+                <span className="account-ws-tag">
+                  {activeWorkspace.name} · {activeWorkspace.slug}.amazonmap.ai
+                </span>
+              )}
+            </div>
             <p>Accounts used to read and publish your catalog</p>
           </div>
           <button
             type="button"
             className="account-manage"
-            onClick={() => navigate("/settings")}
+            onClick={() => navigate("/dashboard/settings")}
           >
             Manage accounts <ArrowUpRight size={16} />
           </button>
@@ -493,9 +559,10 @@ export default function DashboardPage() {
                     <div className="account-name-line">
                       <h4>{account.name}</h4>
                       <span className="account-api">
-                        {isShopify
-                          ? "Admin GraphQL API"
-                          : "Selling Partner API (SP-API)"}
+                        {account.apiLabel ||
+                          (isShopify
+                            ? "Admin GraphQL API"
+                            : "Selling Partner API (SP-API)")}
                       </span>
                     </div>
                     <p title={account.detail}>{account.detail}</p>
